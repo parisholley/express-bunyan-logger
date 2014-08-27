@@ -73,7 +73,7 @@ module.exports.errorLogger = function (opts) {
 
             var status = res.statusCode,
                 method = req.method,
-                url = req.url || '-',
+                url = (req.baseUrl || '') + (req.url || '-'),
                 referer = req.header('referer') || req.header('referrer') || '-',
                 ua = parseUA ? useragent.parse(req.header('user-agent')) : req.header('user-agent'),
                 httpVersion = req.httpVersionMajor + '.' + req.httpVersionMinor,
